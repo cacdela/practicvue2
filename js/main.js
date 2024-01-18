@@ -1,5 +1,5 @@
 Vue.component('colum', {
-    props: ['name'],  // Добавленный props для передачи уникального имени колонки
+    props: ['name'],
     template: `
     <div class="colum">
       <h2 v-if="!editing" @click="startEditing">{{ text }}</h2>
@@ -12,6 +12,7 @@ Vue.component('colum', {
       </div>
 
       <button @click="addCard">Добавить карточку</button>
+      <button @click="resetData">Сбросить</button>
     </div>
     `,
     data() {
@@ -39,6 +40,12 @@ Vue.component('colum', {
         },
         saveCardsToLocalStorage() {
             localStorage.setItem(`${this.name}_savedCards`, JSON.stringify(this.cards));
+        },
+        resetData() {
+            this.text = 'Нажмите, чтобы изменить';
+            this.cards = [];
+            localStorage.removeItem(`${this.name}_editableText`);
+            localStorage.removeItem(`${this.name}_savedCards`);
         },
     },
     mounted() {

@@ -42,6 +42,15 @@ Vue.component('colum', {
         },
     },
     mounted() {
+        const savedText = localStorage.getItem(`${this.name}_editableText`);
+        if (savedText) {
+            this.text = savedText;
+        }
+
+        const savedCards = localStorage.getItem(`${this.name}_savedCards`);
+        if (savedCards) {
+            this.cards = JSON.parse(savedCards);
+        }
     },
 });
 

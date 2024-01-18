@@ -11,6 +11,7 @@ Vue.component('colum', {
         <cards v-for="(card, index) in cards" :key="index" @removeCard="removeCard(index)"></cards>
       </div>
 
+      <button @click="addCard">Добавить карточку</button>
     </div>
     `,
     data() {

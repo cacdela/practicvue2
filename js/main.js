@@ -45,6 +45,19 @@ Vue.component('colum', {
     },
 });
 
+Vue.component('cards', {
+    template: `    
+    <div class="cards">
+      Карточка
+      <button @click="removeCard">Удалить</button>
+    </div>
+    `,
+    methods: {
+        removeCard() {
+            this.$emit('removeCard');
+        },
+    },
+});
 
 let app = new Vue({
     el: '#app',
